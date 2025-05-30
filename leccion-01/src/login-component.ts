@@ -84,7 +84,7 @@ export class LoginComponent extends LitElement {
                     <a href="#" class="forgot">
                         Forgot password?
                     </a>
-                    <button @click=${this._enviar} ?disabled=${this.deshabilitado}>
+                    <button @click=${this._enviar}>
                         Enviar
                     </button>
                     <span ?hidden=${this.oculto}>
