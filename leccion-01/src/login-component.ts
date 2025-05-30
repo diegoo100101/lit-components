@@ -61,20 +61,20 @@ export class LoginComponent extends LitElement {
       `;
     
     @query("#user")
-    userInput!: HTMLInputElement;
+    _userInput!: HTMLInputElement;
     
     @query("#password")
-    passwordInput!: HTMLInputElement;
+    _passwordInput!: HTMLInputElement;
 
     @property({
         type: Boolean
     })
-    ocultoNoValido = true;
+    _ocultoNoValido = true;
 
     @property({
         type: Boolean
     })
-    ocultoValido = true;
+    _ocultoValido = true;
 
     render() {
         return html`
@@ -97,11 +97,11 @@ export class LoginComponent extends LitElement {
                     <button @click=${this._enviar}>
                         Enviar
                     </button>
-                    <span ?hidden=${this.ocultoNoValido}>
+                    <span ?hidden=${this._ocultoNoValido}>
                         Los campos no son válidos
                     </span>
 
-                    <span ?hidden=${this.ocultoValido} class="span-valido">
+                    <span ?hidden=${this._ocultoValido} class="span-valido">
                         Los campos son válidos
                     </span>
                 </div>
@@ -110,17 +110,17 @@ export class LoginComponent extends LitElement {
     }
 
     private _enviar() {
-        let user = this.userInput.value;
-        let password = this.passwordInput.value;
+        let user = this._userInput.value;
+        let password = this._passwordInput.value;
 
         if(user && password){
-            this.ocultoNoValido = true;
-            this.ocultoValido = false;
+            this._ocultoNoValido = true;
+            this._ocultoValido = false;
             console.log("Usuario: " + user + "\nContraseña: " + password);
         }
         else{
-            this.ocultoNoValido = false;
-            this.ocultoValido = true;
+            this._ocultoNoValido = false;
+            this._ocultoValido = true;
             console.log("No válido");
         }
     }
