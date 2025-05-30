@@ -54,6 +54,10 @@ export class LoginComponent extends LitElement {
             font-size: small;
             color: red;
         }
+
+        .span-valido {
+            color: green;
+        }
       `;
     
     @query("#user")
@@ -65,7 +69,12 @@ export class LoginComponent extends LitElement {
     @property({
         type: Boolean
     })
-    oculto = true;
+    ocultoNoValido = true;
+
+    @property({
+        type: Boolean
+    })
+    ocultoValido = true;
 
     render() {
         return html`
@@ -88,8 +97,12 @@ export class LoginComponent extends LitElement {
                     <button @click=${this._enviar}>
                         Enviar
                     </button>
-                    <span ?hidden=${this.oculto}>
+                    <span ?hidden=${this.ocultoNoValido}>
                         Los campos no son válidos
+                    </span>
+
+                    <span ?hidden=${this.ocultoValido} class="span-valido">
+                        Los campos son válidos
                     </span>
                 </div>
             </div>
@@ -101,11 +114,13 @@ export class LoginComponent extends LitElement {
         let password = this.passwordInput.value;
 
         if(user && password){
-            this.oculto = true;
+            this.ocultoNoValido = true;
+            this.ocultoValido = false;
             console.log("Usuario: " + user + "\nContraseña: " + password);
         }
         else{
-            this.oculto = false;
+            this.ocultoNoValido = false;
+            this.ocultoValido = true;
             console.log("No válido");
         }
     }
