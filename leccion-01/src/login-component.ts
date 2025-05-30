@@ -4,7 +4,7 @@ import { customElement, property, query } from "lit/decorators.js";
 @customElement("login-component")
 export class LoginComponent extends LitElement {
 
-    static styles = css`
+    static readonly styles = css`
         .container {
             display: flex;
             flex-direction: column;
