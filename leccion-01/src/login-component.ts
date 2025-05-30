@@ -5,12 +5,6 @@ import { customElement, property, query } from "lit/decorators.js";
 export class LoginComponent extends LitElement {
 
     static readonly styles = css`
-        .container {
-            display: flex;
-            flex-direction: column;
-            background-color: white;
-        }
-
         .card {
             display: flex;
             flex-direction: column;
@@ -20,10 +14,14 @@ export class LoginComponent extends LitElement {
             border-radius: 5px;
         }
         
-        input{
+        input {
             margin-bottom: 15px;
             border: none;
-            border-bottom: 2px solid
+            border-bottom: 2px solid;
+        }
+
+        input:focus {
+            outline: none;
         }
 
         .login-form { 
@@ -48,7 +46,7 @@ export class LoginComponent extends LitElement {
             font-size: small;
         }
 
-        .forgot{
+        .forgot {
             align-self: center;
         }
 
@@ -67,11 +65,6 @@ export class LoginComponent extends LitElement {
     @property({
         type: Boolean
     })
-    deshabilitado = false;
-
-    @property({
-        type: Boolean
-    })
     oculto = true;
 
     render() {
@@ -79,8 +72,16 @@ export class LoginComponent extends LitElement {
             <div class="card">
                 <h1>Login</h1>
                 <div class="login-form">
-                    <input type="text" id="user" name="user" placeholder="username">
-                    <input type="password" id="password" name="password" placeholder="password">
+
+                    <div>
+                        <img src="src/assets/user.svg" width="20">
+                        <input type="text" id="user" name="user" placeholder="username">
+                    </div>
+                    
+                    <div>
+                        <img src="src/assets/lock.svg" width="20">
+                        <input type="password" id="password" name="password" placeholder="password">
+                    </div>
                     <a href="#" class="forgot">
                         Forgot password?
                     </a>
@@ -105,7 +106,7 @@ export class LoginComponent extends LitElement {
         }
         else{
             this.oculto = false;
-            console.log("no")
+            console.log("No válido");
         }
     }
 }
