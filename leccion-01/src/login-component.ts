@@ -112,11 +112,13 @@ export class LoginComponent extends LitElement {
     private _enviar() {
         let user = this._userInput.value;
         let password = this._passwordInput.value;
+        let userLocalStorage = localStorage.getItem("user");
+        let passwordLocalStorage = localStorage.getItem("password");
 
-        if(user && password){
+        if(user && password && user === userLocalStorage && password === passwordLocalStorage){
             this._ocultoNoValido = true;
             this._ocultoValido = false;
-            console.log("Usuario: " + user + "\nContraseña: " + password);
+            console.log("Autenticado correctamente");
         }
         else{
             this._ocultoNoValido = false;
