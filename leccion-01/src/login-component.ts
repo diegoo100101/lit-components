@@ -67,6 +67,13 @@ export class LoginComponent extends LitElement {
             justify-content: center;
             align-items: center;
         }
+
+        .login-message {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
       `;
     
     @query("#user")
@@ -90,7 +97,10 @@ export class LoginComponent extends LitElement {
             <div ?hidden=${this._esValido}>
                 <div class="body-component">
                     <div class="card">
-                        <h1>Login</h1>
+                        <div class="login-message">
+                            <img src="src/assets/pokeball.svg" width="30">
+                            <h1>Login</h1>
+                        </div>
                         <div class="login-form">
         
                             <div>

@@ -17,7 +17,7 @@ export class FooterComponent extends LitElement {
         return html`
             <footer>
                 <h3>
-                    Lit Components App
+                    Lit Components Pokémon App
                 </h3>
             </footer>
         `;
