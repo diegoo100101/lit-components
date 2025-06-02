@@ -14,6 +14,7 @@ export class MainComponent extends LitElement {
             height: 100vh;
             justify-content: center;
             align-items: center;
+            margin: 20px;
         }
 
         .card {
