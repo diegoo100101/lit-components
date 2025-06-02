@@ -20,6 +20,11 @@ export class ApiComponent extends LitElement {
         ul {
             list-style-type: circle;
         }
+
+        div {
+            display: flex;
+            justify-content: center;    
+        }
     `
 
     @property({
@@ -44,7 +49,10 @@ export class ApiComponent extends LitElement {
 
     render() {
         return html`
-        <h1>Pokémon en API:</h1>
+        <div>
+            <img src="src/assets/pokeball.svg" width="40">
+            <h1>Pokémon en API:</h1>
+        </div>
         <ul>
             ${this.pokemonResponse.results?.map((pokemon) => html`<li>${pokemon.name}</li>`)}
         </ul>

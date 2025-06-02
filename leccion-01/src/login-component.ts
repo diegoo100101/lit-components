@@ -1,7 +1,7 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 
-import "./api-component";
+import "./main-component";
 
 @customElement("login-component")
 export class LoginComponent extends LitElement {
@@ -60,6 +60,13 @@ export class LoginComponent extends LitElement {
         .span-valido {
             color: green;
         }
+
+        .body-component {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
       `;
     
     @query("#user")
@@ -81,36 +88,36 @@ export class LoginComponent extends LitElement {
     render() {
         return html`
             <div ?hidden=${this._esValido}>
-                <div class="card">
-                    <h1>Login</h1>
-                    <div class="login-form">
-    
-                        <div>
-                            <img src="src/assets/user.svg" width="20">
-                            <input type="text" id="user" name="user" placeholder="username">
+                <div class="body-component">
+                    <div class="card">
+                        <h1>Login</h1>
+                        <div class="login-form">
+        
+                            <div>
+                                <img src="src/assets/user.svg" width="20">
+                                <input type="text" id="user" name="user" placeholder="username">
+                            </div>
+                            
+                            <div>
+                                <img src="src/assets/lock.svg" width="20">
+                                <input type="password" id="password" name="password" placeholder="password">
+                            </div>
+                            <a href="#" class="forgot">
+                                Forgot password?
+                            </a>
+                            <button @click=${this._enviar}>
+                                Enviar
+                            </button>
+                            <span ?hidden=${this._enviado ? this._esValido : true}>
+                                Los campos no son válidos
+                            </span>
                         </div>
-                        
-                        <div>
-                            <img src="src/assets/lock.svg" width="20">
-                            <input type="password" id="password" name="password" placeholder="password">
-                        </div>
-                        <a href="#" class="forgot">
-                            Forgot password?
-                        </a>
-                        <button @click=${this._enviar}>
-                            Enviar
-                        </button>
-                        <span ?hidden=${this._enviado ? this._esValido : true}>
-                            Los campos no son válidos
-                        </span>
                     </div>
                 </div>
             </div>
 
             <div ?hidden=${!this._esValido}>
-                <div class="card">
-                    <api-component></api-component>
-                </div>
+                <main-component></main-component>
             </div>
             `;
     }
