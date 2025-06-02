@@ -15,7 +15,7 @@ export class HeaderComponent extends LitElement {
     render() {
         return html`
                 <header>
-                    <h1>${localStorage.getItem("user")}</h1>
+                    <h1>¡Bienvenido, ${localStorage.getItem("user")}!</h1>
                 </header>
             `
     }
