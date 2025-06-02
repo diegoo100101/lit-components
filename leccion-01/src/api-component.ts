@@ -1,4 +1,4 @@
-import { css, html, LitElement, type CSSResultGroup } from "lit";
+import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
 export interface IPokemonResponse {
@@ -44,7 +44,7 @@ export class ApiComponent extends LitElement {
 
     render() {
         return html`
-        <h1>Pokémon encontrados en API:</h1>
+        <h1>Pokémon en API:</h1>
         <ul>
             ${this.pokemonResponse.results?.map((pokemon) => html`<li>${pokemon.name}</li>`)}
         </ul>
