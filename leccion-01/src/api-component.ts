@@ -2,15 +2,15 @@ import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
 export interface IPokemonResponse {
-  count?: number
-  next?: string
-  previous?: any
-  results?: IPokemonInfo[]
+  count?: number;
+  next?: string;
+  previous?: any;
+  results?: IPokemonInfo[];
 }
 
 export interface IPokemonInfo {
-  name?: string
-  url?: string
+  name?: string;
+  url?: string;
 }
 
 @customElement("api-component")

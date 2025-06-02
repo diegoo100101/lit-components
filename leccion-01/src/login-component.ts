@@ -103,10 +103,6 @@ export class LoginComponent extends LitElement {
                         <span ?hidden=${this._enviado ? this._esValido : true}>
                             Los campos no son válidos
                         </span>
-    
-                        <span ?hidden=${this._enviado ? !this._esValido : true} class="span-valido">
-                            Los campos son válidos
-                        </span>
                     </div>
                 </div>
             </div>
