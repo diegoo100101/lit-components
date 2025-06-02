@@ -1,6 +1,8 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 
+import "./api-component";
+
 @customElement("login-component")
 export class LoginComponent extends LitElement {
 
@@ -69,41 +71,49 @@ export class LoginComponent extends LitElement {
     @property({
         type: Boolean
     })
-    _ocultoNoValido = true;
+    _esValido = false;
 
     @property({
         type: Boolean
     })
-    _ocultoValido = true;
+    _enviado = false;
 
     render() {
         return html`
-            <div class="card">
-                <h1>Login</h1>
-                <div class="login-form">
-
-                    <div>
-                        <img src="src/assets/user.svg" width="20">
-                        <input type="text" id="user" name="user" placeholder="username">
+            <div ?hidden=${this._esValido}>
+                <div class="card">
+                    <h1>Login</h1>
+                    <div class="login-form">
+    
+                        <div>
+                            <img src="src/assets/user.svg" width="20">
+                            <input type="text" id="user" name="user" placeholder="username">
+                        </div>
+                        
+                        <div>
+                            <img src="src/assets/lock.svg" width="20">
+                            <input type="password" id="password" name="password" placeholder="password">
+                        </div>
+                        <a href="#" class="forgot">
+                            Forgot password?
+                        </a>
+                        <button @click=${this._enviar}>
+                            Enviar
+                        </button>
+                        <span ?hidden=${this._enviado ? this._esValido : true}>
+                            Los campos no son válidos
+                        </span>
+    
+                        <span ?hidden=${this._enviado ? !this._esValido : true} class="span-valido">
+                            Los campos son válidos
+                        </span>
                     </div>
-                    
-                    <div>
-                        <img src="src/assets/lock.svg" width="20">
-                        <input type="password" id="password" name="password" placeholder="password">
-                    </div>
-                    <a href="#" class="forgot">
-                        Forgot password?
-                    </a>
-                    <button @click=${this._enviar}>
-                        Enviar
-                    </button>
-                    <span ?hidden=${this._ocultoNoValido}>
-                        Los campos no son válidos
-                    </span>
+                </div>
+            </div>
 
-                    <span ?hidden=${this._ocultoValido} class="span-valido">
-                        Los campos son válidos
-                    </span>
+            <div ?hidden=${!this._esValido}>
+                <div class="card">
+                    <api-component></api-component>
                 </div>
             </div>
             `;
@@ -114,15 +124,14 @@ export class LoginComponent extends LitElement {
         let password = this._passwordInput.value;
         let userLocalStorage = localStorage.getItem("user");
         let passwordLocalStorage = localStorage.getItem("password");
+        this._enviado = true;
 
         if(user && password && user === userLocalStorage && password === passwordLocalStorage){
-            this._ocultoNoValido = true;
-            this._ocultoValido = false;
+            this._esValido = true;
             console.log("Autenticado correctamente");
         }
         else{
-            this._ocultoNoValido = false;
-            this._ocultoValido = true;
+            this._esValido = false;
             console.log("No válido");
         }
     }
